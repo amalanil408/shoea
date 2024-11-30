@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "974224901790",
+    "project_id": "shoea-8a483",
+    "storage_bucket": "shoea-8a483.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974224901790:android:8b25815dad9d7c525fdd8f",
+        "android_client_info": {
+          "package_name": "com.example.shoea"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-RbejG3K1G0QhMhzZfKcI2ajzJ1_oa4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
