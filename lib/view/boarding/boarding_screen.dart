@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoea/util/constant.dart';
+import 'package:shoea/view/auth/auth_select_screen.dart';
 
 class BoardingScreen extends StatefulWidget {
   const BoardingScreen({super.key});
@@ -40,7 +41,7 @@ class _BoardingScreenState extends State<BoardingScreen> {
   }
 
   void _onSkip() {
-    
+    Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const AuthSelectScreen()));
   }
 
   @override
