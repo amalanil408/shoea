@@ -26,5 +26,33 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       }
     });
 
+    on<FetchBrandDetails>((event, emit) async {
+  try {
+    emit(FetchBrandDetailsLoading());  // Emit loading state
+
+    final fireStore = FirebaseFirestore.instance;
+    QuerySnapshot brandDocs = await fireStore.collection('brands').get();
+
+    print('Fetched brands count: ${brandDocs.docs.length}');  // Log number of docs fetched
+
+    if (brandDocs.docs.isNotEmpty) {
+      List<Map<String, String>> brands = brandDocs.docs.map((doc) {
+        print('Brand data: ${doc.data()}');  // Log each brand's data
+        return {
+          'name': doc['name'] as String,
+          'icon': doc['icon'] as String,
+        };
+      }).toList();
+
+      emit(FetchBrandDetailsLoaded(brands: brands));  // Emit loaded state
+    } else {
+      emit(FetchBrandDetailsError(error: 'No brands found'));
+    }
+  } catch (e) {
+    emit(FetchBrandDetailsError(error: e.toString()));  // Emit error state
+  }
+});
+
+
   }
 }

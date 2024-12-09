@@ -27,7 +27,10 @@ class SaveUserDetails extends UserAuthEvent{
   final String gender;
   final String dateOfBirth;
   final String? imageUrl;
-  SaveUserDetails({required this.uid, required this.email, required this.firstname, required this.lastName, required this.mobileNum, required this.gender, required this.dateOfBirth , this.imageUrl});
+  final String userType;
+  SaveUserDetails({required this.uid, required this.email, required this.firstname, required this.lastName, required this.mobileNum, required this.gender, required this.dateOfBirth , this.imageUrl,required this.userType});
 }
 
 class LogoutRequested extends UserAuthEvent{}
+
+class GoogleSignInRequested extends UserAuthEvent{}

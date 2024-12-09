@@ -13,6 +13,7 @@ class CustomTextFormField extends StatelessWidget {
     this.isPhoneNumber = false, 
     this.phoneController, 
     this.onInputChanged,
+    this.readOnly = false
   });
 
   final TextEditingController controller;
@@ -23,7 +24,8 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final bool isPhoneNumber;
   final TextEditingController? phoneController;
-  final Function(PhoneNumber)? onInputChanged; 
+  final Function(PhoneNumber)? onInputChanged;
+  final bool readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +67,7 @@ class CustomTextFormField extends StatelessWidget {
                     obscureText: obscureText,
                     controller: controller,
                     validator: validator,
+                    readOnly: readOnly,
                     decoration: InputDecoration(
                       hintText: hintText,
                       hintStyle: const TextStyle(color: Colors.grey),

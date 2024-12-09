@@ -10,3 +10,5 @@ class FetchUserDeatilsInHome extends HomeEvent {
   FetchUserDeatilsInHome({required this.userId});
 
 }
+
+class FetchBrandDetails extends HomeEvent {}

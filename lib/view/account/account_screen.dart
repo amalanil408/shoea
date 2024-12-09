@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoea/bloc/account/account_bloc.dart';
+import 'package:shoea/view/account/edit_profile_screen.dart';
 import 'package:shoea/view/account/widgets/account_item_widgets.dart';
-
+import 'package:shoea/view/account/widgets/model_sheet_logout.dart';
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
 
@@ -77,7 +78,9 @@ class AccountScreen extends StatelessWidget {
                           context,
                           icon: Icons.account_circle_outlined,
                           title: "Edit Profile",
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (ctx) =>  const EditProfileScreen()));
+                          },
                         ),
                         buildAccountItem(
                           context,
@@ -101,7 +104,9 @@ class AccountScreen extends StatelessWidget {
                           context,
                           icon: Icons.logout,
                           title: "Logout",
-                          onTap: () {},
+                          onTap: () async{
+                            showLogoutConfirmation(context);
+                          },
                         ),
                       ],
                     ),

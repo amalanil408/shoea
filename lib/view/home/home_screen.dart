@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
               HomeSearchBarWidget(size: size),
               const BannerWidgetHomeScreen(),
               constantSizedBox(height: 5),
-              const ProductBrandCircleAvatar(count: 8),
+              const ProductBrandCircleAvatar(),
               const ProductBrandButtonWidgetHome(count: 4),
               constantSizedBox(height: 5),
               const ProductGridWidgetHome(itemCount: 7)

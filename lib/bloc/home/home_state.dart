@@ -20,3 +20,20 @@ class FetchUserDeatilsInHomeError extends HomeState {
   FetchUserDeatilsInHomeError({required this.error});
 
 }
+
+
+class FetchBrandDetailsLoading extends HomeState {}
+
+
+class FetchBrandDetailsLoaded extends HomeState {
+  final List<Map<String , dynamic>> brands;
+
+  FetchBrandDetailsLoaded({required this.brands});
+
+}
+
+class FetchBrandDetailsError extends HomeState {
+  final String error;
+
+  FetchBrandDetailsError({required this.error});
+}

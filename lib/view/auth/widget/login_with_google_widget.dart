@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shoea/bloc/auth/user_auth_bloc.dart';
 
 class LoginWithGoogleWidget extends StatelessWidget {
   const LoginWithGoogleWidget({
@@ -10,7 +12,7 @@ class LoginWithGoogleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        
+        context.read<UserAuthBloc>().add(GoogleSignInRequested());
       },
       child: Container(
         height: 60,

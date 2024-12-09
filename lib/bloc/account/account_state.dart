@@ -21,3 +21,39 @@ class FetchUserDetailsInAccountError extends AccountState {
   FetchUserDetailsInAccountError({required this.error});
 
 }
+
+
+class FetchUserDetailsLoading extends AccountState {}
+
+class FetchUserDetailsLoaded extends AccountState {
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String mobileNum;
+  final String gender;
+  final String imageUrl;
+
+  FetchUserDetailsLoaded({required this.firstName, required this.lastName, required this.email, required this.mobileNum, required this.gender, required this.imageUrl});
+}
+
+class FetchUserDetailsError extends AccountState {
+  final String error;
+
+  FetchUserDetailsError({required this.error});
+}
+
+
+
+class UpdateUserDetailsLoading extends AccountState {}
+
+class UpdateUserDetailsLoaded extends AccountState {
+  final String message;
+
+  UpdateUserDetailsLoaded({required this.message});
+}
+
+class UpdateUserDetailsError extends AccountState {
+  final String error;
+
+  UpdateUserDetailsError({required this.error});
+}
