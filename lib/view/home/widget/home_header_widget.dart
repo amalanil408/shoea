@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shoea/bloc/home/home_bloc.dart';
 import 'package:shoea/util/constant.dart';
 import 'package:shoea/util/shimmer_effect_widget.dart';
 import 'package:shoea/view/offers/offers_screen.dart';
 import 'package:shoea/view/wishlist/wishlist_screen.dart';
+
 
 class HomeHeaderWidget extends StatelessWidget {
   const HomeHeaderWidget({super.key});
@@ -25,18 +25,11 @@ class HomeHeaderWidget extends StatelessWidget {
   }
   @override
   Widget build(BuildContext context) {
-    final currentUser = FirebaseAuth.instance.currentUser;
-    final userId = currentUser?.uid;
-
-    if (userId != null) {
-      context.read<HomeBloc>().add(FetchUserDeatilsInHome(userId: userId));
-    }
-
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        if (state is FetchUserDeatilsInHomeLoading || state is HomeInitial) {
+        if (state is HomeLoading || state is HomeInitial) {
           return buildShimmerEffect();
-        } else if (state is FetchUserDeatilsInHomeLoaded) {
+        } else if (state is HomeLoaded) {
           return Row(
             children: [
               CircleAvatar(

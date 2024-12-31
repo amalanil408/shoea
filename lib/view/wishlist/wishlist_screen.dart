@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,19 +9,11 @@ class WishlistScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentUser = FirebaseAuth.instance.currentUser;
+    final userId = currentUser?.uid;
+
     return Scaffold(
-      appBar: AppBar(
-        title:  Text("My Wishlist",style: GoogleFonts.roboto(
-          fontWeight: FontWeight.bold,
-          letterSpacing: 1
-        ),),
-        actions: [
-          IconButton(onPressed: (){}, icon: const Icon(CupertinoIcons.search))
-        ],
-      ),
-      body: const SingleChildScrollView(
-        child: ProductGridWidgetWishlist(itemCount: 5)
-        ),
+      body: ProductGridWidgetWishlist(userId: userId!),
     );
   }
 }

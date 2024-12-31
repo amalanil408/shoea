@@ -29,3 +29,20 @@ class UpdateUserDetails extends AccountEvent {
     required this.mobileNum,
   });
 }
+
+
+class AddAddress extends AccountEvent {
+  final String userId;
+  final String address;
+  final String category;
+
+  AddAddress({required this.userId, required this.address, required this.category});
+}
+
+
+class FetchAddress extends AccountEvent {
+  final String userId;
+
+  FetchAddress({required this.userId});
+
+}

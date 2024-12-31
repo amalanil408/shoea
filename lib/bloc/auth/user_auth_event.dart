@@ -28,7 +28,8 @@ class SaveUserDetails extends UserAuthEvent{
   final String dateOfBirth;
   final String? imageUrl;
   final String userType;
-  SaveUserDetails({required this.uid, required this.email, required this.firstname, required this.lastName, required this.mobileNum, required this.gender, required this.dateOfBirth , this.imageUrl,required this.userType});
+  final List<dynamic> address;
+  SaveUserDetails({required this.uid, required this.email, required this.firstname, required this.lastName, required this.mobileNum, required this.gender, required this.dateOfBirth , this.imageUrl,required this.userType,required this.address});
 }
 
 class LogoutRequested extends UserAuthEvent{}

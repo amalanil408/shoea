@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shoea/bloc/home/home_bloc.dart';
 import 'package:shoea/util/constant.dart';
 import 'package:shoea/view/home/widget/banner_widget_home.dart';
 import 'package:shoea/view/home/widget/home_header_widget.dart';
@@ -12,6 +15,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+
+    if (userId != null) {
+      context.read<HomeBloc>().add(FetchHomeData(userId: userId));
+    }
     final Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Padding(
@@ -27,7 +35,7 @@ class HomeScreen extends StatelessWidget {
               const ProductBrandCircleAvatar(),
               const ProductBrandButtonWidgetHome(count: 4),
               constantSizedBox(height: 5),
-              const ProductGridWidgetHome(itemCount: 7)
+              const ProductGridWidgetHome()
             ],
           ),
         ),

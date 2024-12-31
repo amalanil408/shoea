@@ -57,3 +57,30 @@ class UpdateUserDetailsError extends AccountState {
 
   UpdateUserDetailsError({required this.error});
 }
+
+
+
+class AddAddressLoading extends AccountState {}
+
+class AddAddressSuccess extends AccountState {}
+
+class AddAddressFailure extends AccountState {
+  final String error;
+
+  AddAddressFailure({required this.error});
+}
+
+
+class AddressLoading extends AccountState {}
+
+class AddressLoaded extends AccountState {
+  final List<Map<String, dynamic>> addresses;
+
+  AddressLoaded({required this.addresses});
+}
+
+class AddressError extends AccountState {
+  final String error;
+
+  AddressError({required this.error});
+}

@@ -162,7 +162,8 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   gender: selectedGender, 
                   dateOfBirth: _dateController.text,
                   imageUrl: base64Image,
-                  userType: 'User'
+                  userType: 'User',
+                  address: []
                   ));
               }) ,
                 ),

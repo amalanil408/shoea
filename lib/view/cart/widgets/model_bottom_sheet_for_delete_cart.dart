@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shoea/bloc/Cart/cart_bloc.dart';
 import 'package:shoea/util/constant.dart';
 
-void showDeleteBottomSheet(BuildContext context) {
+void showDeleteBottomSheet(BuildContext context,String productId , String userId, String productName , String productImage) {
   showModalBottomSheet(
     context: context,
     builder: (BuildContext context) {
@@ -43,9 +45,9 @@ void showDeleteBottomSheet(BuildContext context) {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        "Product name",
-                        style: TextStyle(
+                       Text(
+                        productName,
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
@@ -116,7 +118,7 @@ void showDeleteBottomSheet(BuildContext context) {
                     foregroundColor: Colors.white,
                   ),
                   onPressed: () {
-                    Navigator.pop(context);
+                    BlocProvider.of<CartBloc>(context).add(DeleteFromCart(userId: userId, productId: productId));
                   },
                   child: const Text('Yes, Remove'),
                 ),

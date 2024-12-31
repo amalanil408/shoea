@@ -73,7 +73,8 @@ class UserAuthBloc extends Bloc<UserAuthEvent, UserAuthState> {
           'date_of_birth' : event.dateOfBirth,
           'uid' : event.uid,
           'imageUrl' : event.imageUrl,
-          'user_type' : event.userType
+          'user_type' : event.userType,
+          'address' : event.address
         });
         emit(AuthSuccess("User data saved successfully"));
       } catch (e) {

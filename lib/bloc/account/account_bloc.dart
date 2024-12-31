@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 part 'account_event.dart';
@@ -64,6 +65,43 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         emit(UpdateUserDetailsLoaded(message: 'profile Update Successfully'));
       } catch (e) {
         emit(UpdateUserDetailsError(error: e.toString()));
+      }
+    });
+
+
+    on<AddAddress>((event,emit) async{
+      try {
+        final fireStore = FirebaseFirestore.instance;
+        emit(AddAddressLoading());
+
+        final userDocRef = fireStore.collection('users').doc(event.userId);
+        await userDocRef.update({
+          'address' : FieldValue.arrayUnion([
+            {'address' : event.address, 'category' : event.category}
+          ])
+        });
+        emit(AddAddressSuccess());
+      } catch (e) {
+        emit(AddAddressFailure(error: e.toString()));
+      }
+    });
+
+
+    on<FetchAddress>((event,emit) async{
+      emit(AddressLoading());
+      try {
+        final fireStore = FirebaseFirestore.instance;
+        final userRefDoc = fireStore.collection('users').doc(event.userId);
+        final userDoc = await userRefDoc.get();
+
+        if(userDoc.exists){
+          final address = List<Map<String,dynamic>>.from(userDoc.data()?['address'] ?? []);
+          emit(AddressLoaded(addresses: address));
+        } else {
+          emit(AddressError(error: "User Not Found"));
+        }
+      } catch (e) {
+        emit(AddressError(error: e.toString()));
       }
     });
   }

@@ -1,8 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shoea/bloc/Cart/cart_bloc.dart';
+import 'package:shoea/bloc/Search/search_bloc.dart';
+import 'package:shoea/bloc/Sort/sort_bloc.dart';
 import 'package:shoea/bloc/account/account_bloc.dart';
 import 'package:shoea/bloc/auth/user_auth_bloc.dart';
+import 'package:shoea/bloc/Wishlist/wishlist_bloc.dart';
 import 'package:shoea/bloc/home/home_bloc.dart';
 import 'package:shoea/firebase_options.dart';
 import 'package:shoea/util/constant.dart';
@@ -32,7 +36,19 @@ class MyApp extends StatelessWidget {
         BlocProvider<HomeBloc>(create: (context) => HomeBloc()),
 
         // Account Bloc
-        BlocProvider<AccountBloc>(create: (context) => AccountBloc())
+        BlocProvider<AccountBloc>(create: (context) => AccountBloc()),
+
+        //cart bloc
+        BlocProvider<CartBloc>(create: (context) => CartBloc()),
+
+        //search bloc
+        BlocProvider(create: (context) => SearchBloc()),
+
+        //sort bloc
+        BlocProvider(create: (context) => SortBloc()),
+
+        //wishlist bloc
+        BlocProvider(create: (context) => WishlistBloc())
       ], 
       child:  MaterialApp(
         theme: ThemeData(

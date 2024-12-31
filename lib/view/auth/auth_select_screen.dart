@@ -57,7 +57,7 @@ class AuthSelectScreen extends StatelessWidget {
                 size: size,
                 buttonText: 'Sign in with password',
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => LoginScreen()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const LoginScreen()));
                 },
               ),
               constantSizedBox(height: 10),
